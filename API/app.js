@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(bodyParser.json()); //traite les requêtes en JSON
+app.use(bodyParser.json());
 
 // Importe les routes
 const gameRoutes = require('./routes/game');

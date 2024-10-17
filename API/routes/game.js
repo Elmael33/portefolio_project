@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Démarre une session de jeu
 router.get('/start-game', (req, res) => {
-  const sessionId = Math.floor(Math.random() * 10000); // Génération d'un ID aléatoire pour la session
+  const sessionId = Math.floor(Math.random() * 10000);
   res.status(200).json({ message: 'Nouvelle session de jeu démarrée', sessionId });
 });
 
