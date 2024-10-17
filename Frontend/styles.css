@@ -3,14 +3,13 @@ body {
     background-color: #f4f4f4;
     padding: 20px;
     text-align: center;
-    margin: 0;
-    padding: 0;
+}
+
+.container-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
 }
 
 button {
@@ -37,20 +36,31 @@ input {
 }
 
 .game-container {
-    width: 800px;   /* Largeur de 800px pour le "carré" */
-    height: 600px;  /* Hauteur de 600px */
-    background-color: #ffffff; /* Couleur de fond du jeu (blanc) */
-    border: 2px solid #333;    /* Bordure pour délimiter */
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Effet d'ombre autour */
-    padding: 20px;  /* Un peu d'espace à l'intérieur du conteneur */
+    width: 800px;
+    height: 600px;
+    background-color: #ffffff;
+    border: 2px solid #333;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
     text-align: center;
 }
 
-h2 {
-    margin-top: 0;
-    color: #333;
+.game-header {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-p {
-    color: #666;
+.game-footer {
+    margin-top: 20px;
+}
+
+button.start-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
