@@ -1,0 +1,78 @@
+-- Crée la base de données
+CREATE DATABASE game_db;
+
+-- Utilise la base de données
+USE game_db;
+
+-- utilisateurs
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    avatar VARCHAR(255) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- sessions de jeu
+CREATE TABLE game_sessions (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    progress INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- réponses des utilisateurs
+CREATE TABLE user_answers (
+    answer_id INT AUTO_INCREMENT PRIMARY KEY,
+    session_id INT,
+    level_id INT,
+    answer TEXT,
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (session_id) REFERENCES game_sessions(session_id) ON DELETE CASCADE
+);
+
+-- scores et le classement
+CREATE TABLE leaderboard (
+    leaderboard_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    score INT,
+    time_taken INT, -- Temps en secondes
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- niveaux du jeu
+CREATE TABLE levels (
+    level_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100),
+    difficulty ENUM('facile', 'moyen', 'difficile'),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- indices fournis aux joueurs
+CREATE TABLE hints (
+    hint_id INT AUTO_INCREMENT PRIMARY KEY,
+    level_id INT,
+    hint TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (level_id) REFERENCES levels(level_id) ON DELETE CASCADE
+);
+
+-- résultats de fin de partie
+CREATE TABLE game_results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    session_id INT,
+    final_score INT,
+    time_taken INT, -- Temps en secondes
+    completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (session_id) REFERENCES game_sessions(session_id) ON DELETE CASCADE
+);
+
+-- l'enregistrement des parties terminées
+CREATE TABLE game_end (
+    end_id INT AUTO_INCREMENT PRIMARY KEY,
+    session_id INT,
+    final_score INT,
+    completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (session_id) REFERENCES game_sessions(session_id) ON DELETE CASCADE
+);

@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+}
+
+#message {
+    margin-top: 20px;
+    color: blue;
+}
+
+.game-container {
+    width: 800px;   /* Largeur de 800px pour le "carré" */
+    height: 600px;  /* Hauteur de 600px */
+    background-color: #ffffff; /* Couleur de fond du jeu (blanc) */
+    border: 2px solid #333;    /* Bordure pour délimiter */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Effet d'ombre autour */
+    padding: 20px;  /* Un peu d'espace à l'intérieur du conteneur */
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+p {
+    color: #666;
+}
